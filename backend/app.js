@@ -42,6 +42,7 @@ app.get('/hello', function(req, res){
    res.send("Hello World!");
 });
 app.use('/auth', require('./routes/auth'));
+app.use('/stories', require('./routes/stories'));
 app.all('/*', function(req, res, next) {
     // Just send the index.html for other files to support HTML5Mode
     res.sendFile('index.html', { root: path.join(__dirname, 'public') });
