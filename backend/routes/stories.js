@@ -9,13 +9,14 @@ const Story = require('../models/Story');
 router.post('/', ensureAuth, async (req, res) => {
   console.log("Processing add story");
   try {
+    console.log(req.body);
     req.body.user = req.user.id;
     const story = await Story.create(req.body);
-    res.json(story);
+    res.json({success: true, msg: 'Story added'});
   } catch (err) {
-    // TODO(timhsieh): Figure out what to do when error.
-    console.log("Add story error");
+    console.log("Cannot add story");
     console.error(err);
+    res.json({success: false, msg: 'Cannot add story'});
   }
 });
 

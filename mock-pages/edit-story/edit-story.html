@@ -43,10 +43,14 @@
     <div class="col-md-10 ">
       <div>
         <h3 class="my-3">Edit Story</h4>
-        <form class="needs-validation" novalidate>
+        <form
+            class="needs-validation" novalidate
+            [formGroup]="storyForm" (ngSubmit)="onSubmit()">
           <div class="mb-3">
             <label for="storyTitle">Story Title</label>
-            <input type="text" class="form-control" id="storyTitle" placeholder="" value="" required>
+            <input
+                type="text" class="form-control" id="storyTitle"
+                formControlName="storyTitle" placeholder="" value="" required>
             <div class="invalid-feedback">
               Story Title is required.
             </div>
@@ -56,7 +60,9 @@
             <div class="col-md-6 mb-3">
               <div class="mb-3">
                 <label for="visibilityStatus">Status</label>
-                <select id="visibilityStatus" class="form-control">
+                <select
+                    id="visibilityStatus" class="form-control"
+                    formControlName="visibilityStatus">
                   <option selected>Public</option>
                   <option>Private</option>
                 </select>
@@ -66,7 +72,10 @@
 
           <div class="mb-3">
             <label for="storyContent">Tell us your story:</label>
-            <textarea class="form-control" id="storyContent" rows="10" required></textarea>
+            <textarea
+                class="form-control" id="storyContent" rows="10"
+                formControlName="storyContent" required>
+            </textarea>
             <div class="invalid-feedback">
               Please enter a story.
             </div>
