@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StoryService } from '../../services/story.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  stories :any = [];
+
+  constructor(private storyService: StoryService) {
+    this.getStories();
+  }
 
   ngOnInit(): void {
+  }
+
+  getStories(): void {
+    this.storyService.getStories().subscribe((data) => {
+     this.stories = data;
+    })    
   }
 
 }

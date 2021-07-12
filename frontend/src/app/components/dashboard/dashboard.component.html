@@ -1,1 +1,27 @@
-<p>dashboard works!</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4" *ngFor="let story of stories">
+      <div class="card mt-5 shadow-sm text-center">
+        <div class="card-body">
+          <h4 class="py-2">
+            <b>{{story.title}} </b>
+          </h4>
+          <div class="section">
+            <p>{{story.body}} </p>
+          </div>
+          <div class="divider"></div>
+          <hr class="mb-4" />
+          <div class="section">
+              <a href="/auth/google" class="btn btn-secondary" role="button">
+                Read More
+              </a>
+              <a href="#" class="btn btn-primary" role="button">
+                <i class="fas fa-edit fa-small"></i>
+                Edit
+              </a>
+          </div>  
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

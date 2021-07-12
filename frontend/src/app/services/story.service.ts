@@ -30,6 +30,10 @@ export class StoryService {
       );
   }
 
+  getStories(): Observable<any> {
+    return this.http.get(`${this.baseUri}`);
+  }
+
   // Error handling 
   errorMgmt(error: HttpErrorResponse) {
     let errorMessage = '';
