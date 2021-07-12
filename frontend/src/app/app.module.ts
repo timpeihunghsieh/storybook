@@ -11,6 +11,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { EditStoryComponent } from './components/edit-story/edit-story.component';
 
 import { StoryService } from './services/story.service';
+import { StoryDetailComponent } from './components/story-detail/story-detail.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { StoryService } from './services/story.service';
     NavbarComponent,
     LoginComponent,
     DashboardComponent,
-    EditStoryComponent
+    EditStoryComponent,
+    StoryDetailComponent
   ],
   imports: [
     BrowserModule,

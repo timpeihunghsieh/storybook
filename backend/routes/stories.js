@@ -37,4 +37,24 @@ router.get('/', ensureAuth, async (req, res) => {
   }
 });
 
+// @desc  Show single story
+// @route GET /stories/:id
+router.get('/:id', ensureAuth, async (req, res) => {
+  try {
+    let story = await Story.findById(req.params.id)
+      .populate('user')
+      .lean();
+
+    if (!story) {
+      console.log("Get a single story error");
+      res.json({});
+    }
+    res.json(story);
+  } catch (err) {
+    // TODO(timhsieh): Figure out what to do when error.
+    console.log("Get a single story error");
+    console.error(err);
+  }
+});
+
 module.exports = router;

@@ -34,6 +34,10 @@ export class StoryService {
     return this.http.get(`${this.baseUri}`);
   }
 
+  getStory(id: string): Observable<any> {
+    return this.http.get(`${this.baseUri}/${id}`);
+  }
+
   // Error handling 
   errorMgmt(error: HttpErrorResponse) {
     let errorMessage = '';
