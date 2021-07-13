@@ -104,4 +104,18 @@ router.put('/:id', ensureAuth, async (req, res) => {
   }
 });
 
+// TODO(timhsieh): Move this out of this file
+// @desc  GET this user's uid
+// @route GET /stories/myuid
+router.get('/myuid', ensureAuth, async (req, res) => {
+  console.log("Processing show myuid");
+  try {
+    res.json(req.user.id);
+  } catch (err) {
+    // TODO(timhsieh): Figure out what to do when error.
+    console.log("Get show myuid error");
+    console.log(err);
+  }
+});
+
 module.exports = router;

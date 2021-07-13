@@ -12,13 +12,14 @@
           <div class="divider"></div>
           <hr class="mb-4" />
           <div class="section">
-              <a href="/story-detail/{{story._id}}" class="btn btn-secondary" role="button">
-                Read More
-              </a>
-              <a href="#" class="btn btn-primary" role="button">
-                <i class="fas fa-edit fa-small"></i>
-                Edit
-              </a>
+            <a href="/story-detail/{{story._id}}" class="btn btn-secondary" role="button">
+              Read More
+            </a>
+            <a href="/edit-story/{{story._id}}" class="btn btn-primary"
+              role="button" *ngIf="story.user._id == myUid">
+              <i class="fas fa-edit fa-small"></i>
+              Edit
+            </a>
           </div>  
         </div>
       </div>
