@@ -104,6 +104,32 @@ router.put('/:id', ensureAuth, async (req, res) => {
   }
 });
 
+// @desc  Delete story
+// @route DELETE /stories/:id
+router.delete('/:id', ensureAuth, async (req, res) => {
+  try {
+    let storyId = req.params.id
+    let story = await Story.findById(storyId).lean();
+    if (!story) {
+      console.log("Delete story error");
+      return;
+    }
+
+    if (story.user != req.user.id) {
+      console.log("Delete story error");
+      return;
+    } else {
+      await Story.remove({_id: storyId});
+
+      console.log("Delete story success");
+      res.status(200);
+    }
+  } catch (err) {
+    console.log("Delete story error");
+    console.error(err);
+  }
+});
+
 // TODO(timhsieh): Move this out of this file
 // @desc  GET this user's uid
 // @route GET /stories/myuid

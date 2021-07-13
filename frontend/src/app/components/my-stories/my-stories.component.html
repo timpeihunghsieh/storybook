@@ -27,7 +27,8 @@
                   <a href="/edit-story/{{story._id}}" class="btn btn-primary" role="button">
                     <i class="fas fa-edit fa-small"></i>
                   </a>
-                  <a href="#" class="btn btn-danger" role="button">
+                  <a href="/my-stories" class="btn btn-danger" role="button"
+                      (click)=deleteStory(story._id)>
                     <i class="fas fa-trash fa-small"></i>
                   </a>
                 </td>

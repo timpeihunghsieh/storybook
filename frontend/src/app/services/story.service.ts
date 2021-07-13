@@ -59,6 +59,18 @@ export class StoryService {
       );
   }
 
+  deleteStory(id: string) {
+    this.http.delete(`${this.baseUri}/${id}`).subscribe({
+      next: data => {
+          console.log("Delete story success");
+      },
+      error: error => {
+          console.log("Delete story fail");
+          console.log(error);
+      }
+    });
+  }
+
   getMyUid(): Observable<any> {
     return this.http.get(`${this.baseUri}/myuid`);
   }

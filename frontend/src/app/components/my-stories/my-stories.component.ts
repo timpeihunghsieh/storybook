@@ -22,4 +22,8 @@ export class MyStoriesComponent implements OnInit {
      this.myStories = data;
     })
   }
+
+  deleteStory(id: string): void {
+    this.storyService.deleteStory(id);
+  } 
 }
