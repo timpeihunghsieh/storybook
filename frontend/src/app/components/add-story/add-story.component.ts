@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
+import { Router } from "@angular/router";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { StoryService } from '../../services/story.service';
 
@@ -17,7 +18,9 @@ export class AddStoryComponent implements OnInit {
 
   constructor(
       public fb: FormBuilder,
-      private storyService: StoryService) { }
+      private storyService: StoryService,
+      private router: Router,
+      private ngZone: NgZone) { }
 
   ngOnInit(): void {
   }
@@ -31,6 +34,7 @@ export class AddStoryComponent implements OnInit {
         console.log(data);
         if (data.success) {
           console.log("successfully added story");
+          this.ngZone.run(() => this.router.navigateByUrl('/dashboard'));
         } else {
           console.log("cannot added story");
         }

@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from "@angular/router";
+import { Component, OnInit, NgZone } from '@angular/core';
+import { ActivatedRoute, Router } from "@angular/router";
 import { StoryService } from '../../services/story.service';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 
@@ -20,7 +20,9 @@ export class EditStoryComponent implements OnInit {
   constructor(
       private actRoute: ActivatedRoute,
       private storyService: StoryService,
-      public fb: FormBuilder) { }
+      public fb: FormBuilder,
+      private router: Router,
+      private ngZone: NgZone) { }
 
   ngOnInit(): void {
     let id = this.actRoute.snapshot.paramMap.get('id') || "";
@@ -49,9 +51,10 @@ export class EditStoryComponent implements OnInit {
       this.storyService.editStory(this.storyForm.value).subscribe(data => {
         console.log(data);
         if (data.success) {
-          console.log("successfully added story");
+          console.log("successfully edited story");
+          this.ngZone.run(() => this.router.navigateByUrl('/dashboard'));
         } else {
-          console.log("cannot added story");
+          console.log("cannot edit story");
         }
       });
 
