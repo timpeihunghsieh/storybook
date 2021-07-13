@@ -8,7 +8,6 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { EditStoryComponent } from './components/edit-story/edit-story.component';
 
 import { StoryService } from './services/story.service';
 import { StoryDetailComponent } from './components/story-detail/story-detail.component';
@@ -21,7 +20,6 @@ import { AddStoryComponent } from './components/add-story/add-story.component';
     NavbarComponent,
     LoginComponent,
     DashboardComponent,
-    EditStoryComponent,
     StoryDetailComponent,
     MyStoriesComponent,
     AddStoryComponent
