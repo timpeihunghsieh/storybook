@@ -75,4 +75,33 @@ router.get('/my-stories', ensureAuth, async (req, res) => {
   }
 });
 
+// @desc  Update story
+// @route PUT /stories/:id
+router.put('/:id', ensureAuth, async (req, res) => {
+  try {
+    console.log("Attempt update story");
+    let story = await Story.findById(req.params.id).lean();
+    if (!story) {
+      console.log("Update story error");
+      res.json({});
+    }
+
+    if (story.user != req.user.id) {
+      console.log("Update story error");
+      res.json({});
+    } else {
+      story = await Story.findOneAndUpdate({ _id: req.params.id }, req.body, {
+        new: true,
+        runValidators: true
+      });
+
+      console.log("Update story success");
+      res.json({success: true});
+    }
+  } catch (error) {
+    console.error(err);
+    res.json({});
+  }
+});
+
 module.exports = router;

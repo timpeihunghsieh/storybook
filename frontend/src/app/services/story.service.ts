@@ -42,6 +42,23 @@ export class StoryService {
     return this.http.get(`${this.baseUri}/my-stories`);
   }
 
+  editStory(data: any): Observable<any> {
+    let url = `${this.baseUri}/${data.id}`;
+    let storyData = {
+      title: data.storyTitle,
+      body: data.storyContent,
+      status: data.visibilityStatus
+    };
+
+    console.log("editStory");
+    console.log(storyData);
+
+    return this.http.put(url, storyData)
+      .pipe(
+        catchError(this.errorMgmt)
+      );
+  }
+
   // Error handling 
   errorMgmt(error: HttpErrorResponse) {
     let errorMessage = '';

@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="row justify-content-md-center" >
+    <div class="col-md-10 ">
+      <div>
+        <h3 class="my-3">Edit Story</h3>
+        <form class="needs-validation" novalidate
+            [formGroup]="storyForm"
+            (ngSubmit)="onSubmit()">
+          <div class="mb-3">
+            <label for="storyTitle">Story Title</label>
+            <input
+                type="text" class="form-control" id="storyTitle"
+                placeholder="" value="" formControlName="storyTitle" required>
+            <div class="invalid-feedback">
+              Story Title is required.
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <div class="mb-3">
+                <label for="visibilityStatus">Status</label>
+                <select id="visibilityStatus" class="form-control"
+                    formControlName="visibilityStatus">
+                  <option selected>public</option>
+                  <option>private</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="storyContent">Tell us your story:</label>
+            <textarea
+                class="form-control" id="storyContent" rows="10" required
+                 formControlName="storyContent">      
+            </textarea>
+            <div class="invalid-feedback">
+              Please enter a story.
+            </div>
+          </div>
+
+          <hr class="mb-4">
+          <button class="btn btn-primary" type="submit">Save</button>
+          <a href="/dashboard" class="btn btn-warning" role="button">
+            Cancel
+          </a>
+        </form>
+      </div>
+    </div>
+  </div>
