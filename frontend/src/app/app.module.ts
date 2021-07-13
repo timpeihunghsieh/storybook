@@ -12,6 +12,7 @@ import { EditStoryComponent } from './components/edit-story/edit-story.component
 
 import { StoryService } from './services/story.service';
 import { StoryDetailComponent } from './components/story-detail/story-detail.component';
+import { MyStoriesComponent } from './components/my-stories/my-stories.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { StoryDetailComponent } from './components/story-detail/story-detail.com
     LoginComponent,
     DashboardComponent,
     EditStoryComponent,
-    StoryDetailComponent
+    StoryDetailComponent,
+    MyStoriesComponent
   ],
   imports: [
     BrowserModule,

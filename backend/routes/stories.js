@@ -38,8 +38,8 @@ router.get('/', ensureAuth, async (req, res) => {
 });
 
 // @desc  Show single story
-// @route GET /stories/:id
-router.get('/:id', ensureAuth, async (req, res) => {
+// @route GET /stories/one-story/:id
+router.get('/one-story/:id', ensureAuth, async (req, res) => {
   try {
     let story = await Story.findById(req.params.id)
       .populate('user')
@@ -53,6 +53,24 @@ router.get('/:id', ensureAuth, async (req, res) => {
   } catch (err) {
     // TODO(timhsieh): Figure out what to do when error.
     console.log("Get a single story error");
+    console.error(err);
+  }
+});
+
+// @desc  Show all the stories belong to a logged in user
+// @route GET /stories/my-stories
+router.get('/my-stories', ensureAuth, async (req, res) => {
+  try {
+    const stories = await Story.find({ user: req.user.id }).lean();
+
+    if (!stories) {
+      console.log("Get my stories error");
+      res.json({});
+    }
+    res.json(stories);
+  } catch (err) {
+    // TODO(timhsieh): Figure out what to do when error.
+    console.log("Get my stories error");
     console.error(err);
   }
 });
