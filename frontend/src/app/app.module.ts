@@ -14,6 +14,7 @@ import { StoryDetailComponent } from './components/story-detail/story-detail.com
 import { MyStoriesComponent } from './components/my-stories/my-stories.component';
 import { AddStoryComponent } from './components/add-story/add-story.component';
 import { EditStoryComponent } from './components/edit-story/edit-story.component';
+import { TempLoginComponent } from './components/temp-login/temp-login.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { EditStoryComponent } from './components/edit-story/edit-story.component
     StoryDetailComponent,
     MyStoriesComponent,
     AddStoryComponent,
-    EditStoryComponent
+    EditStoryComponent,
+    TempLoginComponent
   ],
   imports: [
     BrowserModule,

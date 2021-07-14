@@ -16,11 +16,13 @@ router.get(
 // This code redirects the user to /dashboard if the user is authenticated.
 // Note that req.user is now available thanks to deserializeuser() from
 // above.
+// TODO(timhsieh): currently, this redirects to a /temp-login. This temp
+// page is expected to redirect to a /dashboard. Fix this.
 router.get(
     '/google/callback',
     passport.authenticate('google', { failureRedirect: '/' }),
     (req, res) => {
-      res.redirect('/dashboard');
+      res.redirect('/temp-login');
     }
 );
 
