@@ -9,6 +9,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 
+import { FlashMessagesModule } from 'angular2-flash-messages';
 import { StoryService } from './services/story.service';
 import { StoryDetailComponent } from './components/story-detail/story-detail.component';
 import { MyStoriesComponent } from './components/my-stories/my-stories.component';
@@ -33,7 +34,8 @@ import { TempLoginComponent } from './components/temp-login/temp-login.component
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FlashMessagesModule.forRoot()
   ],
   providers: [StoryService],
   bootstrap: [AppComponent]

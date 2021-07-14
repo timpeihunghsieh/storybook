@@ -2,6 +2,7 @@ import { Component, OnInit, NgZone } from '@angular/core';
 import { Router } from "@angular/router";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { StoryService } from '../../services/story.service';
+import { FlashMessagesService } from 'angular2-flash-messages'; 
 
 @Component({
   selector: 'app-add-story',
@@ -20,7 +21,8 @@ export class AddStoryComponent implements OnInit {
       public fb: FormBuilder,
       private storyService: StoryService,
       private router: Router,
-      private ngZone: NgZone) { }
+      private ngZone: NgZone,
+      private flashMessage: FlashMessagesService) { }
 
   ngOnInit(): void {
   }
@@ -32,9 +34,14 @@ export class AddStoryComponent implements OnInit {
       // Add Story
       this.storyService.createStory(this.storyForm.value).subscribe(data => {
         if (data.success) {
+          this.flashMessage.show(
+              "New Story Added!",
+              {cssClass: 'alert-success', timeout: 3000 /* 3 seconds */});
           this.ngZone.run(() => this.router.navigateByUrl('/dashboard'));
         } else {
-          console.log("Cannot added story");
+          this.flashMessage.show(
+              "Cannot Add a Story",
+              {cssClass: 'alert-danger', timeout: 3000 /* 3 seconds */});
         }
       });
 
