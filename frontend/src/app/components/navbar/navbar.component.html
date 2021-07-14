@@ -15,6 +15,10 @@
               *ngIf="authService.isLoggedIn()">My Stories</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="/add-story"
+              *ngIf="authService.isLoggedIn()">Add Story</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="/auth/logout"
               *ngIf="authService.isLoggedIn()" (click)="logout()">Log out</a>
           </li>
