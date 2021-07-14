@@ -6,15 +6,18 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="/dashboard">Public Stories</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/my-stories">My Stories</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/auth/logout" (click)="logout()">Log out</a>
-        </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/dashboard"
+              *ngIf="authService.isLoggedIn()">Public Stories</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/my-stories"
+              *ngIf="authService.isLoggedIn()">My Stories</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/auth/logout"
+              *ngIf="authService.isLoggedIn()" (click)="logout()">Log out</a>
+          </li>
       </ul>
     </div>
   </nav>
