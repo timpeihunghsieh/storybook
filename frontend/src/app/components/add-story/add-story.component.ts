@@ -31,12 +31,10 @@ export class AddStoryComponent implements OnInit {
     } else {
       // Add Story
       this.storyService.createStory(this.storyForm.value).subscribe(data => {
-        console.log(data);
         if (data.success) {
-          console.log("successfully added story");
           this.ngZone.run(() => this.router.navigateByUrl('/dashboard'));
         } else {
-          console.log("cannot added story");
+          console.log("Cannot added story");
         }
       });
 

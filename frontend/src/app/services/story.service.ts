@@ -50,9 +50,6 @@ export class StoryService {
       status: data.visibilityStatus
     };
 
-    console.log("editStory");
-    console.log(storyData);
-
     return this.http.put(url, storyData)
       .pipe(
         catchError(this.errorMgmt)
@@ -68,7 +65,7 @@ export class StoryService {
           console.log("Delete story fail");
           console.log(error);
       }
-    });
+    });;
   }
 
   getMyUid(): Observable<any> {

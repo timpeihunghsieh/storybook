@@ -31,9 +31,6 @@ export class EditStoryComponent implements OnInit {
 
   getStory(id: string) {
     this.storyService.getStory(id).subscribe(data => {
-      console.log("updated story");
-      console.log(this.storyForm);
-
       this.storyForm.setValue({
         id: data["_id"],
         storyTitle: data["title"],
@@ -49,9 +46,7 @@ export class EditStoryComponent implements OnInit {
     } else {
       // Edit Story
       this.storyService.editStory(this.storyForm.value).subscribe(data => {
-        console.log(data);
         if (data.success) {
-          console.log("successfully edited story");
           this.ngZone.run(() => this.router.navigateByUrl('/dashboard'));
         } else {
           console.log("cannot edit story");

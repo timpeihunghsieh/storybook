@@ -22,8 +22,6 @@ export class DashboardComponent implements OnInit {
   getStories(): void {
     this.storyService.getStories().subscribe((data) => {
      this.stories = data;
-     console.log("getStories");
-     console.log(this.stories);
     })    
   }
 
@@ -31,9 +29,6 @@ export class DashboardComponent implements OnInit {
   getMyself(): void {
     this.storyService.getMyUid().subscribe((data) => {
       this.myUid = data;
-      console.log("myUid");
-      console.log(this.myUid);
     });
   }
-
 }
