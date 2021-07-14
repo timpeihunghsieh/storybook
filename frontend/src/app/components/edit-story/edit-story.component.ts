@@ -2,6 +2,7 @@ import { Component, OnInit, NgZone } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
 import { StoryService } from '../../services/story.service';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { FlashMessagesService } from 'angular2-flash-messages'; 
 
 @Component({
   selector: 'app-edit-story',
@@ -22,7 +23,8 @@ export class EditStoryComponent implements OnInit {
       private storyService: StoryService,
       public fb: FormBuilder,
       private router: Router,
-      private ngZone: NgZone) { }
+      private ngZone: NgZone,
+      private flashMessage: FlashMessagesService) { }
 
   ngOnInit(): void {
     let id = this.actRoute.snapshot.paramMap.get('id') || "";
@@ -47,9 +49,14 @@ export class EditStoryComponent implements OnInit {
       // Edit Story
       this.storyService.editStory(this.storyForm.value).subscribe(data => {
         if (data.success) {
-          this.ngZone.run(() => this.router.navigateByUrl('/dashboard'));
+          this.flashMessage.show(
+              "Story Updated!",
+              {cssClass: 'alert-success', timeout: 3000 /* 3 seconds */});
+          this.ngZone.run(() => this.router.navigateByUrl('/my-stories'));
         } else {
-          console.log("cannot edit story");
+          this.flashMessage.show(
+              "Cannot Update the story",
+              {cssClass: 'alert-danger', timeout: 3000 /* 3 seconds */});
         }
       });
 

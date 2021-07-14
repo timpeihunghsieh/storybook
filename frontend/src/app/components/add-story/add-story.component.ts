@@ -37,7 +37,7 @@ export class AddStoryComponent implements OnInit {
           this.flashMessage.show(
               "New Story Added!",
               {cssClass: 'alert-success', timeout: 3000 /* 3 seconds */});
-          this.ngZone.run(() => this.router.navigateByUrl('/dashboard'));
+          this.ngZone.run(() => this.router.navigateByUrl('/my-stories'));
         } else {
           this.flashMessage.show(
               "Cannot Add a Story",
